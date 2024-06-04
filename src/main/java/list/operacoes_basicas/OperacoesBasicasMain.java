@@ -1,8 +1,8 @@
-import main.java.list.operacoes_basicas.CarrinhoDeCompra;
-import main.java.list.operacoes_basicas.ListaTarefa;
+package main.java.list.operacoes_basicas;
 
 public class OperacoesBasicasMain {
     public static void main(String[] args) {
+
         System.out.println("\n------------Lista De Tarefas-----------------\n");
         ListaTarefa tarefas = new ListaTarefa();
 

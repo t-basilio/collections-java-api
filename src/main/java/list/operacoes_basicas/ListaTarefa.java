@@ -16,8 +16,10 @@ public class ListaTarefa {
     }
 
     public boolean removerTarefa(String descricao) {
-        return tarefas.removeAll(tarefas.stream()
+        if(!tarefas.isEmpty())
+            return tarefas.removeAll(tarefas.stream()
                 .filter(t -> t.getDescricao().equalsIgnoreCase(descricao)).toList());
+        return false;
     }
 
     public int obterNumeroTotalTarefas() {
@@ -25,7 +27,9 @@ public class ListaTarefa {
     }
 
     public String obterDescricoesTarefas() {
-        return tarefas.stream().map(Tarefa::getDescricao)
+        if(!tarefas.isEmpty())
+            return tarefas.stream().map(Tarefa::getDescricao)
                 .reduce((desc, next) -> desc.concat("\n" + next)).orElseThrow();
+        return "vazio!!!";
     }
 }

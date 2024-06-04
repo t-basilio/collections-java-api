@@ -16,17 +16,23 @@ public class CarrinhoDeCompra {
     }
 
     public boolean removerItem(String nome) {
-        return carrinho.removeAll(carrinho.stream()
+        if(!carrinho.isEmpty())
+            return carrinho.removeAll(carrinho.stream()
                 .filter(i -> i.getNome().equalsIgnoreCase(nome)).toList());
+        return false;
     }
 
     public Double calcularValorTotal() {
-        return carrinho.stream().map(Item::valorTotal)
+        if(!carrinho.isEmpty())
+            return carrinho.stream().map(Item::valorTotal)
                 .reduce(Double::sum).orElseThrow();
+        return 0D;
     }
 
     public String exibirItens() {
-        return carrinho.stream().map(Item::toString)
+        if(!carrinho.isEmpty())
+            return carrinho.stream().map(Item::toString)
                 .reduce((item, next) -> item.concat("\n\n" + next)).orElseThrow();
+        return "vazio!!!";
     }
 }
